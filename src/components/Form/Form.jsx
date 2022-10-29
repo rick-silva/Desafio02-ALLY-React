@@ -2,13 +2,16 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './Form.css'
+import '../../assets/css/loading.css'
 
 const Form = () =>{
 
     //recebe por padrão um array vazio
     const [paises, setpaises] = useState([])
-
     const [cidades, setcidades] = useState([])
+
+    // Loading
+    const [loading, setloading] = useState([true])
 
     useEffect(() => {
         axios.get("https://amazon-api.sellead.com/country")
@@ -16,6 +19,7 @@ const Form = () =>{
             //data -> informa cada dado da resposta(response) da api
             // console.log(response.data.map((pais) => pais.name))
             setpaises(response.data)
+            setloading(false)
         }).catch(() => {
             console.log("Falha na API PAISES")
         })
@@ -29,6 +33,17 @@ const Form = () =>{
             console.log("Falha API CIDADE")
         })
     })
+
+    //se o setloading for veradeiro, retorna uma animação de carregamento
+    if(loading){
+        return(
+            <div className="loading">
+                <div class="loadingio-spinner-rolling-4hqgne5mgzv"><div class="ldio-y0jx1z7opu">
+                <div></div>
+                </div></div>
+            </div>
+        );
+    }
 
     // console.log(paises.map((pais) => pais.code))
 
