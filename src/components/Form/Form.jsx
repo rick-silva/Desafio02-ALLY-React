@@ -1,7 +1,22 @@
 
+import axios from 'axios'
+import { useEffect } from 'react'
 import './Form.css'
 
 const Form = () =>{
+
+    useEffect(() => {
+        let paises = axios.get("https://amazon-api.sellead.com/country")
+        .then((response) => {
+            //data -> informa cada dado da resposta(response) da api
+            console.log(response.data.map((pais) => pais.name))
+        }).catch(() => {
+            console.log("Falha na API")
+        })
+    }, [])
+
+    // console.log(paises.map((pais) => pais.code))
+
     return(
         // Fragment, encapsular os elementos com uma "div fantasma"
         <>
@@ -25,7 +40,8 @@ const Form = () =>{
 
             <label htmlFor="cidade">Cidade: </label>
             <select name="" id="" required>
-                <option value="braganca-paulista" disabled>Bragança Paulista</option>
+                <option value="" disable>Rio de Janeiro</option>
+                {/* {paises.data.map((pais) => <option value={pais.code}>{pais.name}</option>)} */}
             </select>
 
             <input type="submit" value="Enviar" />
