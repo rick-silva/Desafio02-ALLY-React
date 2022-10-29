@@ -3,8 +3,12 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './Form.css'
 import '../../assets/css/loading.css'
+import Select from 'react-select'
+
 
 const Form = () =>{
+
+    
 
     //recebe por padrão um array vazio
     const [paises, setpaises] = useState([])
@@ -38,7 +42,7 @@ const Form = () =>{
     if(loading){
         return(
             <div className="loading">
-                <div class="loadingio-spinner-rolling-4hqgne5mgzv"><div class="ldio-y0jx1z7opu">
+                <div className="loadingio-spinner-rolling-4hqgne5mgzv"><div className="ldio-y0jx1z7opu">
                 <div></div>
                 </div></div>
             </div>
@@ -46,6 +50,17 @@ const Form = () =>{
     }
 
     // console.log(paises.map((pais) => pais.code))
+    const paisesOptions = paises.map(pais => ({
+        value: pais.code,
+        label: pais.name
+    }))
+
+    const cidadesOptions = cidades.map(cidade =>({
+        value: cidade.code,
+        label: cidade.name
+    }))
+
+    
 
     return(
         // Fragment, encapsular os elementos com uma "div fantasma"
@@ -72,27 +87,31 @@ const Form = () =>{
             <br />
 
             <label htmlFor="pais">Pais: </label>
-            <select name="" id="" required>
-                <option value="" disable="true">Brasil</option>
 
-                {paises.map((pais,key) => {
+            <Select className='select' isMulti id="" required options={paisesOptions} />
+            {/* <select>
+                {paises.map((pais, key) => {
                     return(
-                        <option key={key} value={pais.code}>{pais.name}</option>
+                        <option key={key} value={paises.code} label={pais.name}></option>
                     )
                 })}
-            </select>
+            </select> */}
+                
+                
+            
             <br />
             <br />
 
             <label htmlFor="cidade">Cidade: </label>
-            <select name="" id="" required>
-                <option value="" disable="true">Rio de Janeiro</option>
+            <Select className='select' isMulti options={cidadesOptions} required/>
+            {/* <select id="" required>
+                <option value="" disable="true">Selecione</option>
                 {cidades.map((cidade, key) => {
                     return(
                         <option key={key} value={cidade.code}>{cidade.name}</option>
                     )
                 })}
-            </select>
+            </select> */}
             <br />
             <br />
 
