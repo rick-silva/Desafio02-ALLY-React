@@ -66,54 +66,39 @@ const Form = () =>{
         // Fragment, encapsular os elementos com uma "div fantasma"
         <>
         <form action="">
-            <label htmlFor="nome">Nome: </label>
-            <input type="text" minLength={3} placeholder='Digite seu nome' required/>
-            <br />
-            <br />
+            <div id='dados-pessoais'>
+                <label htmlFor="nome">Nome: </label>
+                <input type="text" minLength={3} placeholder='Digite seu nome' required/>
+                <br />
+                <br />
 
-            <label htmlFor="email">Email: </label>
-            <input type="email" minLength={5} placeholder='Digite seu email' required/>
-            <br />
-            <br />
+                <label htmlFor="email">Email: </label>
+                <input type="email" minLength={5} placeholder='Digite seu email' required/>
+                <br />
+                <br />
 
-            <label htmlFor="telefone">Telefone: </label>
-            <input type="tel" minLength={11} name="telefone" id="" placeholder='Digite seu telefone' required/>
-            <br />
-            <br />
+                <label htmlFor="telefone">Telefone: </label>
+                <input type="tel" minLength={11} name="telefone" id="" placeholder='Digite seu telefone' required/>
+                <br />
+                <br />
 
-            <label htmlFor="cpf">CPF: </label>
-            <input type="text" minLength={11} placeholder='Digite seu CPF' required/>
-            <br />
-            <br />
+                <label htmlFor="cpf">CPF: </label>
+                <input type="text" minLength={11} placeholder='Digite seu CPF' required/>
+                <br />
+                <br />
+            </div>
 
-            <label htmlFor="pais">Pais: </label>
+            <div id='pontos-interesse'>
+                <label htmlFor="pais">Pais: </label>
+                <Select className='select' isMulti id="" required options={paisesOptions} />
+                <br />
+                <br />
 
-            <Select className='select' isMulti id="" required options={paisesOptions} />
-            {/* <select>
-                {paises.map((pais, key) => {
-                    return(
-                        <option key={key} value={paises.code} label={pais.name}></option>
-                    )
-                })}
-            </select> */}
-                
-                
-            
-            <br />
-            <br />
-
-            <label htmlFor="cidade">Cidade: </label>
-            <Select className='select' isMulti options={cidadesOptions} required/>
-            {/* <select id="" required>
-                <option value="" disable="true">Selecione</option>
-                {cidades.map((cidade, key) => {
-                    return(
-                        <option key={key} value={cidade.code}>{cidade.name}</option>
-                    )
-                })}
-            </select> */}
-            <br />
-            <br />
+                <label htmlFor="cidade">Cidade: </label>
+                <Select className='select' isMulti options={cidadesOptions} required/>
+                <br />
+                <br />
+            </div>
 
             <input type="submit" value="Enviar" />
         </form>
