@@ -6,6 +6,8 @@ Desafio 02 proposto pela empresa ALLY, como complemento do processo seletivo de 
   <img alt="Desafio02-img" src="./src/assets/img/project.png" width="100%">
 </p>
 
+[Hospedado no "Netlify"](https://delicate-scone-c77992.netlify.app/)
+
 ## 🚀 Tecnologias
 
 Tecnologias utilizadas no Desafio 02 | ALLY :
