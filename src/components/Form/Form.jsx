@@ -1,10 +1,16 @@
 
+// importação para consumir as apis utilizando o metodo get
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './Form.css';
 import '../../assets/css/global.css';
 import '../../assets/css/loading.css';
+
+
+
+//biblioteca para personalizar o select, permitindo a seleção de multiplas opções
 import Select from 'react-select';
+// biblioteca para mascara de CPF e Telefone usando expressões regulares
 import MaskedInput from 'react-text-mask'
 
 
@@ -91,6 +97,7 @@ const Form = () =>{
                     <br />
                     {/* utilizando a biblioteca MaskedImput com expressão regular(regex) */}
                     <MaskedInput placeholder='Digite seu CPF' mask={[/\d/,/\d/,/\d/,'.',/\d/,/\d/,/\d/,'.',/\d/,/\d/,/\d/,'-',/\d/,/\d/]} minLength={11} required/>
+                    
                     {/* <input type="number" minLength={11} placeholder='Digite seu CPF' required/> */}
                 </div>
                 <div id='div-destinos'>
