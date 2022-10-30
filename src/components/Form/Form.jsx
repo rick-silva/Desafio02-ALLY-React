@@ -1,12 +1,10 @@
 
-// importação para consumir as apis utilizando o metodo get
+// importação para consumir as apis utilizando o metodo get, fazendo suas requisições
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './Form.css';
 import '../../assets/css/global.css';
 import '../../assets/css/loading.css';
-
-
 
 //biblioteca para personalizar o select, permitindo a seleção de multiplas opções
 import Select from 'react-select';
@@ -16,6 +14,10 @@ import MaskedInput from 'react-text-mask'
 
 const Form = () =>{
 
+    /*State(estado) -> elemento que armazena valores de propriedade 
+    do componente, quando o estado dos objetos muda 
+    eles são renderizados novamente*/
+
 
     //recebe por padrão um array vazio
     const [paises, setpaises] = useState([])
@@ -24,13 +26,18 @@ const Form = () =>{
     // Loading
     const [loading, setloading] = useState([true])
 
+    /*utilizado para fazer a requisição get. A cada vez renderização do componente 
+    será executada a função de "request"*/
     useEffect(() => {
+        //executa o metodo get na API, recuperando seus dados JSON
         axios.get("https://amazon-api.sellead.com/country")
+        //caso a requisição retorne uma resposta positiva
         .then((response) => {
             //data -> informa cada dado da resposta(response) da api
-            // console.log(response.data.map((pais) => pais.name))
             setpaises(response.data)
             setloading(false)
+
+            //catch -> caso a requisição retorne uma resposta positiva
         }).catch(() => {
             console.log("Falha na API PAISES")
         })
@@ -46,6 +53,7 @@ const Form = () =>{
     })
 
     //se o setloading for veradeiro, retorna uma animação de carregamento
+    //"componente" condicional
     if(loading){
         return(
             <div className="loading">
@@ -57,6 +65,10 @@ const Form = () =>{
     }
 
     // console.log(paises.map((pais) => pais.code))
+    /*O componente Select espera receber dois valores, "value" e "label" que
+    se referem ao "id" e "nome" de cada dado json da api. Valor informado como code(nome do id da api) e
+    name(apelido da propriedade que carrega o valor do nome). O mesmo se refere para a API de cidade
+    */
     const paisesOptions = paises.map(pais => ({
         value: pais.code,
         label: pais.name
@@ -67,9 +79,6 @@ const Form = () =>{
         label: cidade.name
     }))
 
-    
-
-    
 
     return(
         // Fragment, encapsular os elementos com uma "div fantasma"
@@ -89,8 +98,10 @@ const Form = () =>{
 
                     <label htmlFor="telefone">Telefone: </label>
                     <br />
+
+                    {/* chamada do input Mask, passando a propriedade da mascara com expressoes regulares */}
                     <MaskedInput placeholder='Digite seu telefone' mask={['(',/\d/,/\d/,/\d/,')',/\d/,/\d/,/\d/,/\d/,/\d/,'-',/\d/,/\d/,/\d/,/\d/]} minLength={11} required/>
-                    {/* <input type="tel" minLength={11} name="telefone" id="" placeholder='Digite seu telefone' required/> */}
+                    
                     <br />
 
                     <label htmlFor="cpf">CPF: </label>
@@ -98,11 +109,16 @@ const Form = () =>{
                     {/* utilizando a biblioteca MaskedImput com expressão regular(regex) */}
                     <MaskedInput placeholder='Digite seu CPF' mask={[/\d/,/\d/,/\d/,'.',/\d/,/\d/,/\d/,'.',/\d/,/\d/,/\d/,'-',/\d/,/\d/]} minLength={11} required/>
                     
-                    {/* <input type="number" minLength={11} placeholder='Digite seu CPF' required/> */}
                 </div>
                 <div id='div-destinos'>
                     <label htmlFor="pais" required>Pais: </label>
+                    {/* Chamada do componente "Select" passando todos os elementos da api por meio da
+                    variavel "paisesOptions" que recebe um metodo MAP(). Propriedade "isMulti" permite a seleção de multiplos elementos no input*/}
                     <Select className='select' isMulti options={paisesOptions} required/>
+                    {/* <select name="" id="" >
+                        <option value="" >Selecione</option>
+                        {paises.map((pais) => <option required> {pais.name} </option>)}
+                    </select> */}
                     
                     <label htmlFor="cidade">Cidade: </label>
                     <Select className='select' isMulti options={cidadesOptions} required/>
