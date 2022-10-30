@@ -19,6 +19,24 @@ Tecnologias utilizadas no Desafio 02 | ALLY :
 - [React-Select](https://react-select.com/home)
 - [React-Text-Mask](https://www.npmjs.com/package/react-text-mask)
 
+## 💾 Dempendencias
+- NPM 
+```
+npm install
+```
+- Axios 
+```
+npm install axios
+```
+- react-select 
+```
+npm i --save react-select
+```
+- react-text-mask 
+```
+npm i react-text-mask --save
+```
+
 ## 💻 Projeto
 
 O "Desafio02-ALLY-React" é um projeto em React JS proposto pela empresa ALLY como teste complementar do seu processo seletivo de estágio.
