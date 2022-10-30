@@ -1,10 +1,11 @@
 
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import './Form.css'
-import '../../assets/css/global.css'
-import '../../assets/css/loading.css'
-import Select from 'react-select'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import './Form.css';
+import '../../assets/css/global.css';
+import '../../assets/css/loading.css';
+import Select from 'react-select';
+import MaskedInput from 'react-text-mask'
 
 
 const Form = () =>{
@@ -82,16 +83,19 @@ const Form = () =>{
 
                     <label htmlFor="telefone">Telefone: </label>
                     <br />
-                    <input type="tel" minLength={11} name="telefone" id="" placeholder='Digite seu telefone' required/>
+                    <MaskedInput placeholder='Digite seu telefone' mask={['(',/\d/,/\d/,/\d/,')',/\d/,/\d/,/\d/,/\d/,/\d/,'-',/\d/,/\d/,/\d/,/\d/]} minLength={11} required/>
+                    {/* <input type="tel" minLength={11} name="telefone" id="" placeholder='Digite seu telefone' required/> */}
                     <br />
 
                     <label htmlFor="cpf">CPF: </label>
                     <br />
-                    <input type="number" minLength={11} placeholder='Digite seu CPF' required/>
+                    {/* utilizando a biblioteca MaskedImput com expressão regular(regex) */}
+                    <MaskedInput placeholder='Digite seu CPF' mask={[/\d/,/\d/,/\d/,'.',/\d/,/\d/,/\d/,'.',/\d/,/\d/,/\d/,'-',/\d/,/\d/]} minLength={11} required/>
+                    {/* <input type="number" minLength={11} placeholder='Digite seu CPF' required/> */}
                 </div>
                 <div id='div-destinos'>
-                    <label htmlFor="pais">Pais: </label>
-                    <Select className='select' isMulti id="" required options={paisesOptions} />
+                    <label htmlFor="pais" required>Pais: </label>
+                    <Select className='select' isMulti options={paisesOptions} required/>
                     
                     <label htmlFor="cidade">Cidade: </label>
                     <Select className='select' isMulti options={cidadesOptions} required/>
