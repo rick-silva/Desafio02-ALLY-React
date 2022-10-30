@@ -9,7 +9,6 @@ import Select from 'react-select'
 
 const Form = () =>{
 
-    
 
     //recebe por padrão um array vazio
     const [paises, setpaises] = useState([])
@@ -43,8 +42,8 @@ const Form = () =>{
     if(loading){
         return(
             <div className="loading">
-                <div className="loadingio-spinner-rolling-4hqgne5mgzv"><div className="ldio-y0jx1z7opu">
-                <div></div>
+                <div className="loadingio-spinner-reload-sgpn4x38edq"><div className="ldio-i24j6i337l9">
+                <div><div></div><div></div><div></div></div>
                 </div></div>
             </div>
         );
@@ -63,28 +62,40 @@ const Form = () =>{
 
     
 
+    
+
     return(
         // Fragment, encapsular os elementos com uma "div fantasma"
         <>
         <form action="">
-            <div className="div-info" id='div-dados'>
-                <label htmlFor="nome">Nome: </label>
-                <input type="text" minLength={3} placeholder='Digite seu nome' required/>
+            <div className="div-info" >
+                <div id='div-dados'>
+                    <label htmlFor="nome">Nome: </label>
+                    <br />
+                    <input type="text" minLength={3} placeholder='Digite seu nome' required/>
+                    <br />
 
-                <label htmlFor="email">Email: </label>
-                <input type="email" minLength={5} placeholder='Digite seu email' required/>
+                    <label htmlFor="email">Email: </label>
+                    <br />
+                    <input type="email" minLength={5} placeholder='Digite seu email' required/>
+                    <br />
 
-                <label htmlFor="telefone">Telefone: </label>
-                <input type="tel" minLength={11} name="telefone" id="" placeholder='Digite seu telefone' required/>
-                
-                <label htmlFor="cpf">CPF: </label>
-                <input type="text" minLength={11} placeholder='Digite seu CPF' required/>
+                    <label htmlFor="telefone">Telefone: </label>
+                    <br />
+                    <input type="tel" minLength={11} name="telefone" id="" placeholder='Digite seu telefone' required/>
+                    <br />
 
-                <label htmlFor="pais">Pais: </label>
-                <Select className='select' isMulti id="" required options={paisesOptions} />
-                
-                <label htmlFor="cidade">Cidade: </label>
-                <Select className='select' isMulti options={cidadesOptions} required/>
+                    <label htmlFor="cpf">CPF: </label>
+                    <br />
+                    <input type="number" minLength={11} placeholder='Digite seu CPF' required/>
+                </div>
+                <div id='div-destinos'>
+                    <label htmlFor="pais">Pais: </label>
+                    <Select className='select' isMulti id="" required options={paisesOptions} />
+                    
+                    <label htmlFor="cidade">Cidade: </label>
+                    <Select className='select' isMulti options={cidadesOptions} required/>
+                </div>
                 
             </div>
 

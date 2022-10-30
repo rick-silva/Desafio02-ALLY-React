@@ -5,12 +5,13 @@
 
 :root{
     --white: #fff;
+    --primary-color: #1902e8;
 }
 
 body{
     height: 100vh;
     width: 100%;
-    background-image: url('../../assets/img/wallpaper.jpg');
+    background-image: url('../../assets/img/wallpaper.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -32,33 +33,46 @@ input{
     border-radius: 5px;
 }
 
-.div-info{
-    width: 30%;
-    height: auto;
-    background-color: aqua;
-    display: flex;
-    /* align-items: center; */
-    justify-content: right;
-    flex-direction: column;
-    margin: 1rem;
+input:focus{
+    background-color: #1902e828;
+    color: var(--white);
+}
 
+.div-info{
+    width: 60%;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    margin: 1rem;
     background: rgba( 255, 255, 255, 0.15 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
     backdrop-filter: blur( 6px );
     -webkit-backdrop-filter: blur( 6px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
+#div-dados{
+    margin-right: 1rem;
+}
+
+#div-destinos{
+    margin-left: 1rem;
+}
+
 .select{
     width: 400px;
     margin: 20px auto;
+    color: #000
 }
 
 #btn-enviar{
     width: 6.25rem;
+    height: 1.5rem;
     cursor: pointer;
-    background-color: #a102b0;
+    background-color: var(--primary-color);
     color: var(--white);
     border: none;
     transition: .2s;
@@ -68,5 +82,5 @@ input{
     width: 7rem;
     cursor: pointer;
     background-color: var(--white);
-    color: #a102b0;
+    color: var(--primary-color);
 }
