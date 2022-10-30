@@ -13,6 +13,7 @@ Tecnologias utilizadas no Desafio 02 | ALLY :
 - ReactJS
 - CSS
 - JSON
+- [ViteJS](https://vitejs.dev/)
 - [API Paises](https://amazon-api.sellead.com/country)
 - [API Cidades](https://amazon-api.sellead.com/city)
 - [Axios](https://www.npmjs.com/package/axios)
