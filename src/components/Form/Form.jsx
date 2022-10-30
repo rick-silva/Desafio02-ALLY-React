@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './Form.css'
+import '../../assets/css/global.css'
 import '../../assets/css/loading.css'
 import Select from 'react-select'
 
@@ -66,41 +67,28 @@ const Form = () =>{
         // Fragment, encapsular os elementos com uma "div fantasma"
         <>
         <form action="">
-            <div id='dados-pessoais'>
+            <div className="div-info" id='div-dados'>
                 <label htmlFor="nome">Nome: </label>
                 <input type="text" minLength={3} placeholder='Digite seu nome' required/>
-                <br />
-                <br />
 
                 <label htmlFor="email">Email: </label>
                 <input type="email" minLength={5} placeholder='Digite seu email' required/>
-                <br />
-                <br />
 
                 <label htmlFor="telefone">Telefone: </label>
                 <input type="tel" minLength={11} name="telefone" id="" placeholder='Digite seu telefone' required/>
-                <br />
-                <br />
-
+                
                 <label htmlFor="cpf">CPF: </label>
                 <input type="text" minLength={11} placeholder='Digite seu CPF' required/>
-                <br />
-                <br />
-            </div>
 
-            <div id='pontos-interesse'>
                 <label htmlFor="pais">Pais: </label>
                 <Select className='select' isMulti id="" required options={paisesOptions} />
-                <br />
-                <br />
-
+                
                 <label htmlFor="cidade">Cidade: </label>
                 <Select className='select' isMulti options={cidadesOptions} required/>
-                <br />
-                <br />
+                
             </div>
 
-            <input type="submit" value="Enviar" />
+            <input type="submit" id='btn-enviar' value="Enviar" />
         </form>
         </>
     )
